@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Network Track</title>
+  <link rel="stylesheet" href="styles/add.css">
+  <link rel="stylesheet" href="styles/all.css">
+  <link rel="stylesheet" href="styles/output.css">
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+  <div style="background: #34495E;" class="w-full text-white">
+   <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+     <div class="p-4 flex flex-row items-center justify-between">
+       <a href="index.html" class="text-lg font-semibold tracking-widest text-gray-200 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Network Track</a>
+       <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+         <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+           <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+           <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+         </svg>
+       </button>
+     </div>
+     <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+       <div class="text-gray-600 bg-white rounded mr-5">
+         <input class="border-r-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-l-lg text-sm focus:outline-none"
+           type="search" name="search" placeholder="Search">
+         <button type="submit" class="lg:mr-2 lg:ml-1">
+           <i class="fas fa-search"></i>
+         </button>
+       </div>
+       <a class="px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Forum</a>
+       <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Docs</a>
+       <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="about.html">About</a>
+       <div @click.away="open = false" class="relative" x-data="{ open: false }">
+         <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+           <span>Sign In</span>
+           <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+         </button>
+         <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+           <div style="background: #34495E;" class="px-2 py-2 rounded-md shadow dark-mode:bg-gray-800">
+             <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="login.html">Login</a>
+             <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="register.html">Register</a>
+           </div>
+         </div>
+       </div>    
+     </nav>
+   </div>
+ </div>
+  
+  <div class="flex flex-wrap">
+    <div class="w-full lg:w-3/5 mb-2 bg-white px-10 py-16">
+      <h1 class="text-3xl text-secondary font-bold mb-1">A Forum where computer network problem solved</h1>
+      <h1 class="text-lg text-gray-600 mb-4">
+         We want to connect the people who have knowledge to the people who need it
+      </h1>
+      <p class="text-justify font-semibold tracking-wider">
+         Website ini adalah sebuah web yang bertujuan untuk sarana diskusi tentang jaringan komputer dalam bentuk forum. Anda bisa menikmati berbagai blog dan berita terbaru seputar jaringan komputer dengan cara berlangganan dengan situs kami yakni dengan membuat sebuah akun dan subscribe. Website ini juga terdapat berbagai macam artikel dan juga tutorial tentang jaringan komputer.
+      </p>
+    </div>
+
+
+    <div class="w-full lg:w-1/5 mb-2 bg-white">
+      
+      <div class="w-full px-4 lg:pt-8">
+        <div style="background: #34495E;" class="coding inverse-toggle px-3 pt-4 text-gray-100 text-sm subpixel-antialiased pb-6 pt-4  leading-normal overflow-hidden mt-12">
+           <div class="top mb-2 flex">
+                <div class="h-3 w-3 bg-red-500 rounded-full"></div>
+                <div class="ml-2 h-3 w-3 bg-orange-300 rounded-full"></div>
+                <div class="ml-2 h-3 w-3 bg-green-500 rounded-full"></div>
+           </div>
+           <div class="mt-4 flex">
+            <span class="text-green-400 font-bold">TOP HASTAGS</span>
+         </div>
+           <div class="flex items-center mt-1">
+            <div class="w-1/4 text-green-500 tracking-tight">
+               <span>TCP</span>
+            </div>
+            <div class="w-3/5">
+               <div class="bg-gray-300 w-full rounded-lg h-2">
+                  <div class=" w-2/4 bg-green-600 rounded-lg h-2"></div>
+               </div>
+            </div>
+            <div class="w-1/4 text-white pl-2">
+               <span class="text-sm">51%</span>
+            </div>
+         </div><!-- first -->
+         <div class="flex items-center mt-1"> 
+            <div class="w-1/4 text-green-500 tracking-tighter">
+               <span>Internet</span>
+            </div>
+            <div class="w-3/5">
+              <div class="bg-gray-300 w-full rounded-lg h-2">
+                 <div class=" w-1/4 bg-green-600 rounded-lg h-2"></div>
+              </div>
+           </div>
+            <div class="w-1/5 text-white pl-2">
+               <span class="text-sm">19%</span>
+            </div>
+         </div><!-- second -->
+         <div class="flex items-center mt-1">
+            <div class="w-1/4 text-green-500 tracking-tighter">
+               <span>UDP</span>
+            </div>
+            <div class="w-3/5">
+               <div class="bg-gray-300 w-full rounded-lg h-2">
+                  <div class=" w-3/12 bg-green-600 rounded-lg h-2"></div>
+               </div>
+            </div>
+            <div class="w-1/4 text-white pl-2">
+               <span class="text-sm">17%</span>
+            </div>
+         </div><!-- thierd -->
+         <div class="flex items-center mt-1">
+            <div class=" w-1/4 text-green-500 tracking-tighter">
+               <span>Cisco</span>
+            </div>
+            <div class="w-3/5">
+               <div class="bg-gray-300 w-full rounded-lg h-2">
+                  <div class=" w-1/6 bg-green-600 rounded-lg h-2"></div>
+               </div>
+            </div>
+            <div class="w-1/4 text-white pl-2">
+               <span class="text-sm">8%</span>
+            </div>
+         </div>
+           </div>
+        </div>
+
+        <div class="w-full px-4">
+          <div style="background: #34495E;" class="coding px-3 pt-4 text-gray-100 text-sm subpixel-antialiased pb-6 pt-4 leading-normal overflow-hidden mt-2">
+            <div class="card-text">
+              <h1 class="text-xl md:text-2xl font-bold leading-tight text-white">Read the latest blog right into your inbox!</h1>
+            </div>
+            <div class="card-mail flex items-center my-5">
+              <input type="email" class="border-l border-t border-b border-gray-200 rounded w-full text-base md:text-lg px-3 py-2" placeholder="Enter Your Email">
+            </div>
+              <button class="bg-orange-500 hover:bg-orange-600 hover:border-orange-600 text-white font-bold capitalize px-3 py-2 text-base md:text-lg rounded border-t border-r border-b border-orange-500">Subscribe</button>
+          </div>
+       </div>
+    
+
+
+
+
+
+
+ 
+   
+   
+
+
+
+
+    </div>
+
+
+
+  </div>
+  
+  <footer style="background: #34495E;">
+    <div class="flex pb-5 px-3 m-auto pt-5 border-t text-white text-sm flex-col
+       md:flex-row max-w-6xl">
+       <div class="mt-2">© Copyright 2020. All Rights Reserved.</div>
+       <div class="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
+          <a href="/#" class="w-6 mx-1">
+             <svg class="fill-current cursor-pointer text-white hover:text-gray-500" width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2;">
+                <path id="Twitter" d="M24,12c0,6.627 -5.373,12 -12,12c-6.627,0 -12,-5.373 -12,-12c0,-6.627
+                   5.373,-12 12,-12c6.627,0 12,5.373 12,12Zm-6.465,-3.192c-0.379,0.168
+                   -0.786,0.281 -1.213,0.333c0.436,-0.262 0.771,-0.676
+                   0.929,-1.169c-0.408,0.242 -0.86,0.418 -1.341,0.513c-0.385,-0.411
+                   -0.934,-0.667 -1.541,-0.667c-1.167,0 -2.112,0.945 -2.112,2.111c0,0.166
+                   0.018,0.327 0.054,0.482c-1.754,-0.088 -3.31,-0.929
+                   -4.352,-2.206c-0.181,0.311 -0.286,0.674 -0.286,1.061c0,0.733 0.373,1.379
+                   0.94,1.757c-0.346,-0.01 -0.672,-0.106 -0.956,-0.264c-0.001,0.009
+                   -0.001,0.018 -0.001,0.027c0,1.023 0.728,1.877 1.694,2.07c-0.177,0.049
+                   -0.364,0.075 -0.556,0.075c-0.137,0 -0.269,-0.014 -0.397,-0.038c0.268,0.838
+                   1.048,1.449 1.972,1.466c-0.723,0.566 -1.633,0.904 -2.622,0.904c-0.171,0
+                   -0.339,-0.01 -0.504,-0.03c0.934,0.599 2.044,0.949 3.237,0.949c3.883,0
+                   6.007,-3.217 6.007,-6.008c0,-0.091 -0.002,-0.183 -0.006,-0.273c0.413,-0.298
+                   0.771,-0.67 1.054,-1.093Z"></path>
+             </svg>
+          </a>
+          <a href="/#" class="w-6 mx-1">
+             <svg class="fill-current cursor-pointer text-white hover:text-gray-500" width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2;">
+                <path id="Facebook" d="M24,12c0,6.627 -5.373,12 -12,12c-6.627,0 -12,-5.373 -12,-12c0,-6.627
+                   5.373,-12 12,-12c6.627,0 12,5.373
+                   12,12Zm-11.278,0l1.294,0l0.172,-1.617l-1.466,0l0.002,-0.808c0,-0.422
+                   0.04,-0.648 0.646,-0.648l0.809,0l0,-1.616l-1.295,0c-1.555,0 -2.103,0.784
+                   -2.103,2.102l0,0.97l-0.969,0l0,1.617l0.969,0l0,4.689l1.941,0l0,-4.689Z"></path>
+             </svg>
+          </a>
+          <a href="/#" class="w-6 mx-1">
+             <svg class="fill-current cursor-pointer text-white hover:text-gray-400" width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2;">
+                <path id="Combined-Shape" d="M12,24c6.627,0 12,-5.373 12,-12c0,-6.627 -5.373,-12 -12,-12c-6.627,0
+                   -12,5.373 -12,12c0,6.627 5.373,12 12,12Zm6.591,-15.556l-0.722,0c-0.189,0
+                   -0.681,0.208 -0.681,0.385l0,6.422c0,0.178 0.492,0.323
+                   0.681,0.323l0.722,0l0,1.426l-4.675,0l0,-1.426l0.935,0l0,-6.655l-0.163,0l-2.251,8.081l-1.742,0l-2.222,-8.081l-0.168,0l0,6.655l0.935,0l0,1.426l-3.74,0l0,-1.426l0.519,0c0.203,0
+                   0.416,-0.145 0.416,-0.323l0,-6.422c0,-0.177 -0.213,-0.385
+                   -0.416,-0.385l-0.519,0l0,-1.426l4.847,0l1.583,5.704l0.042,0l1.598,-5.704l5.021,0l0,1.426Z"></path>
+             </svg>
+          </a>
+       </div>
+    </div>
+  </footer>
+
+
+</body>
+</html>
